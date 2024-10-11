@@ -1,8 +1,8 @@
 # learn_bash_scripting
 
 ## Use command line to create a file.
-echo '#!/bin/bash' > conditional_script.sh
+echo '#!/bin/bash' > filename.sh
 
 ## Set execution permission only for user. 
-chmod u+x conditional_script.sh
+chmod u+x filename.sh
 
