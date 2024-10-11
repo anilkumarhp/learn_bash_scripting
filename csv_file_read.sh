@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 csv_file="./arrays_table.csv"
 
 # parse table columns into 3 arrays
@@ -22,6 +21,16 @@ echo "There are $nlines lines in the file"
 
 # populate the array
 for ((i=1; i<$nlines; i++)); do
-  column_3[$i]=$((column_2[$i] - column_1[$i]))
+    echo "${column_2[$i]}, ${column_1[$i]}, "
+    column_3[$i]=$((column_2[$i] - column_1[$i]))
 done
 echo "${column_3[@]}"
+
+## Combine the new array with the csv file
+# first write the new array to file
+# initialize the file with a header
+echo "${column_3[0]}" > column_3.txt
+for ((i=1; i<nlines; i++)); do
+    echo "${column_3[$i]}" >> column_3.txt
+done
+paste -d "," $csv_file column_3.txt > report.csv
